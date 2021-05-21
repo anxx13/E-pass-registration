@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        h1 {text-align: center;}
+    </style>
+<!--    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>-->
+<!--    <script src="./static/js/script.js" type="text/javascript"/></script>-->
+    <script>
+        var citiesByState = {
+    AP: [ "Anantapur","Chittoor","East Godavari","Guntur","Krishna","Kurnool","S.P.S. Nellore","Prakasam","Srikakulam",
+           "Visakhapatnam","Vizianagaram","West Godavari","Y.S.R. Kadapa"],
+    AR: ["Anjaw","Changlang","East Kameng","East Siang","Kamle","Kurung Kumey","Lohit","Longding","Lower Dibang Valley",
+         "Lower Siang","Lower Subansiri","Namsai","Papum Pare","Shi Yomi","Siang","Tawang",
+         "Tirap","Upper Dibang Valley","Upper Siang","Upper Subansiri","West Kameng","West Siang"],
+    BR: ["Araria","Arwal","Aurangabad","Banka","Begusarai","Bhagalpur","Bhojpur","Buxar","Darbhanga","East Champaran",
+         "Gaya","Gopalganj","Jamui","Jehanabad","Kaimur","Katihar","Khagaria","Kishanganj","Lakhisarai","Madhepura",
+         "Muzaffarpur","Nalanda","Nawada","Patna","Purnia","Rohtas","Saharsa","Samastipur","Saran",
+         "Sheikhpura","Sheohar","Sitamarhi","Siwan","Supaul","Vaishali","West Champaran"],
+    CH: ["Chandigarh"],
+    CT: ["Balod","Baloda Bazar","Balrampur","Bastar","Bemetara","Bijapur","Bilaspur","Dakshin Bastar Dantewada","Dhamtari","Durg", "Gariaband","Janjgir Champa",
+         "Jashpur","Kabeerdham","Kondagaon","Korba","Koriya","Mahasamund","Mungeli","Narayanpur","Raigarh","Raipur","Rajnandgaon","Sukma",
+         "Surajpur","Surguja","Uttar Bastar Kanker"],
+    DL: ["Delhi"],
+    DN: ["Dadra and Nagar Haveli","Daman","Diu"],
+    GJ: ["Ahmedabad","Aravalli","Bhavnagar","Chhota Udaipur","Devbhumi Dwarka","Gandhinagar","Gir Somnath",
+         "Narmada","Panchmahal","Porbandar","Rajkot","Surat","Tapi","Vadodara"],
+    HP: ["Bilaspur","Chamba","Kullu","Shimla","Una"],
+    HR: ["Ambala","Faridabad","Fatehabad","Hisar","Kurukshetra","Palwal","Panipat","Yamunanagar"],
+    JH: ["Ranchi","Bokaro","Dumka","Garhwa","Hazaribagh","Khunti","Pakur",],
+    JK: ["Srinagar","Jammu","Bandipora","Kishtwar","Punch","Udhampur"],
+    KA: ["Bengaluru Rural","Bengaluru Urban","Mysuru","Raichur","Bidar","Chikkaballapura","Dakshina Kannada","Davanagere","Hassan","Haveri","Udupi","Uttara Kannada","Yadgir"],
+    KL: ["Thiruvananthapuram","Ernakulam","Kannur","Kollam","Malappuram","Wayanad"],
+    LD: ["Lakshadweep"],
+    MH: ["Ahmednagar","Amravati","Aurangabad","Bhandara","Mumbai","Nagpur","Nashik","Pune","Solapur","Thane"],
+    ML: ["Ribhoi","East Khasi Hills","West Khasi Hills"],
+    MP: ["Bhopal","Ashoknagar","Indore","Katni","Narsinghpur","Shajapur","Shivpuri","Vidisha"],
+    MZ: ["Aizawl","Champhai","Saiha"],
+    NL: ["Kohima","Mon","Dimapur"],
+    OR: ["Angul","Cuttack","Jagatsinghapur","Gajapati","Malkangiri","Rayagada","Puri"],
+    PB: ["Amritsar","Faridkot","Jalandhar","Ludhiana","Pathankot","Patiala"],
+    PY: ["Karaikal","Puducherry","Yanam"],
+    RJ: ["Jaipur","Ajmer","Alwar","Chittorgarh","Dholpur","Ganganagar","Jodhpur","Sikar","Udaipur"],
+    TN: ["Chennai","Coimbatore","Kancheepuram","Kanyakumari","Madurai","Nilgiris","Ramanathapuram","Kannauj",
+         "Thanjavur","Tiruvannamalai","Tiruvarur","Vellore"],
+    TR: ["Dhalai","Gomati","Khowai"],
+    UP: ["Agra", "Allahabad","Ayodhya","Chitrakoot","Fatehpur","Firozabad","Ghaziabad",
+        "Jhansi","Lucknow","Meerut","Mirzapur","Rampur","Sultanpur","Varanasi"],
+    UT: ["Chamoli","Dehradun","Haridwar","Nainital","Uttarkashi"],
+    WB: ["Bankura","Darjeeling","Hooghly","Howrah","Kolkata","Nadia"]
+    }
+function makeSubmenu(value) {
+    if(value.length==0) document.getElementById("citySelect").innerHTML = "<option></option>";
+    else {
+    var citiesOptions = "";
+        for(cityId in citiesByState[value]) {
+        citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+        }
+        document.getElementById("citySelect").innerHTML = citiesOptions;
+    }
+}
+function resetSelection() {
+    document.getElementById("countrySelect").selectedIndex = 0;
+    document.getElementById("citySelect").selectedIndex = 0;
+}
+function makeSubmenu1(value) {
+    if(value.length==0) document.getElementById("citySelect1").innerHTML = "<option></option>";
+    else {
+        var citiesOptions = "";
+        for(cityId in citiesByState[value]) {
+            citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+        }
+        document.getElementById("citySelect1").innerHTML = citiesOptions;
+    }
+}
+function resetSelection1() {
+    document.getElementById("countrySelect1").selectedIndex = 0;
+    document.getElementById("citySelect1").selectedIndex = 0;
+}
+
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="" style="background-color:whitesmoke" >
+    <br>
+    <h1> <u>E-PASS REGISTRATION</u></h1>
+    <br><br>
+    <div class="container">
+    <form method="post" action="/register">
+        <div class="form-row">
+            <div class="col">
+                <label> First Name :</label>
+                <input type="text" name='fname' class="form-control" required>
+            </div>
+            <div class="col">
+                <label> Last Name :</label>
+                <input type="text"  name='lname' class="form-control" required>
+            </div>
+        </div>
+        <br>
+        <!--        <label> First Name :</label><input type="text" name='fname' placeholder="First Name" maxlength="10" class="form-control" required><br><br>-->
+        <!--        <label> Last Name :</label><input type="text" name="lname" placeholder="Last Name" required><br><br>-->
+        <label> Email Id :</label><input type="text" name="email"  class="form-control" required>
+
+        <!--        <div class="form-group row">-->
+        <!--            <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>-->
+        <!--            <div class="col-sm-10">-->
+        <!--                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="form-row">-->
+        <!--            <div class="col">-->
+        <!--                <label> Email Id :</label>-->
+        <!--                <input type="text" name='email' class="form-control" required>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <br>
+        <div class="form-row">
+            <!--            <div class="col">-->
+            <!--                <div class="form-group">-->
+            <!--                    <label> Source state :</label>-->
+            <!--                    <select class="form-control" id="countySel"  required>-->
+            <!--&lt;!&ndash;                        <option>BR</option>&ndash;&gt;-->
+
+            <!--                    </select>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="col">
+                <div class="form-group">
+                    <label> Source state :</label>
+                    <select class="form-control" id="countrySelect"  name="source_state" onchange="makeSubmenu(this.value)" required>
+<!--                        <option>BR</option>-->
+                        <option value="" disabled selected>Choose State</option>
+
+                        <option>AP</option>
+                        <option>AR</option>
+                        <option>BR</option>
+                        <option>CH</option>
+                        <option>CT</option>
+                        <option>DL</option>
+                        <option>DN</option>
+                        <option>GJ</option>
+                        <option>HP</option>
+                        <option>HR</option>
+                        <option>JH</option>
+                        <option>JK</option>
+                        <option>KA</option>
+                        <option>KL</option>
+                        <option>LD</option>
+                        <option>MH</option>
+                        <option>ML</option>
+                        <option>MP</option>
+                        <option>MZ</option>
+                        <option>NL</option>
+                        <option>OR</option>
+                        <option>PB</option>
+                        <option>PY</option>
+                        <option>RJ</option>
+                        <option>TN</option>
+                        <option>TR</option>
+                        <option>UP</option>
+                        <option>UT</option>
+                        <option>WB</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label> Source District :</label>
+                    <select class="form-control" id="citySelect" name="source" required>
+                        <!--<option>Araria</option>-->
+                        <option value="" disabled selected>Choose District</option>
+                        <option></option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!--        <label> Source state :</label><input type="text" name="source_state" placeholder="source_state" required><br><br>-->
+        <!--        <label> Source District :</label><input type="text" name="source" placeholder="traveling_from" required><br><br>-->
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Destination State :</label>
+                    <select class="form-control" id="countrySelect1"  name="dest_state" onchange="makeSubmenu1(this.value)" required>
+                        <option value="" disabled selected>Choose State</option>
+                        <option>AP</option>
+                        <option>AR</option>
+                        <option>BR</option>
+                        <option>CH</option>
+                        <option>CT</option>
+                        <option>DL</option>
+                        <option>DN</option>
+                        <option>GJ</option>
+                        <option>HP</option>
+                        <option>HR</option>
+                        <option>JH</option>
+                        <option>JK</option>
+                        <option>KA</option>
+                        <option>KL</option>
+                        <option>LD</option>
+                        <option>MH</option>
+                        <option>ML</option>
+                        <option>MP</option>
+                        <option>MZ</option>
+                        <option>NL</option>
+                        <option>OR</option>
+                        <option>PB</option>
+                        <option>PY</option>
+                        <option>RJ</option>
+                        <option>TN</option>
+                        <option>TR</option>
+                        <option>UP</option>
+                        <option>UT</option>
+                        <option>WB</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Destination District :</label>
+                    <select class="form-control" id="citySelect1" name="destination" required>
+                        <!--<option>Anantapur</option>-->
+                        <option value="" disabled selected>District</option>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--        <label>Destination State :</label><input type="text" name="dest_state" placeholder="destination_state" required><br><br>-->
+        <!--        <label>Destination District :</label><input type="text" name="destination" placeholder="destination" required><br><br>-->
+        <label> Mobile Number :</label><input type="number" name="phoneNumber" class="form-control" required><br>
+        <label> Aadhaar Number :</label><input type="number" name="idcard" class="form-control" required><br>
+        <label> Travel Date :</label><input type="date" name="date" class="form-control" required><br>
+        <p>
+            <input type="checkbox"  required>
+            I acknowledge that I am fully aware that in case the information furnished by me is found to be incorrect, I shall be liable for prosecution
+        </p>
+        <input type="submit" value="Submit"  >
+    </form>
+    </div>
+</body>>
+
+</html>

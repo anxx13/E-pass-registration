@@ -1,0 +1,5 @@
+ref:
+https://github.com/sab99r/Indian-States-And-Districts/blob/master/states-and-districts.json
+
+data:
+https://api.covid19india.org/v4/data.json
